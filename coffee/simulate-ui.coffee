@@ -39,6 +39,8 @@ document.addEventListener "DOMContentLoaded", ->
   document.body.appendChild container
 
   document.getElementById("offline-simulate-check").addEventListener "click", ->
+    Offline.options.checks ?= {}
+    
     if @checked
       Offline.options.checks.active = 'down'
     else
