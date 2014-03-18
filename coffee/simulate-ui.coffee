@@ -41,10 +41,7 @@ document.addEventListener "DOMContentLoaded", ->
   document.getElementById("offline-simulate-check").addEventListener "click", ->
     if @checked
       Offline.options.checks.active = 'down'
-      Offline.markDown()
     else
       Offline.options.checks.active = 'up'
-      Offline.markUp()
-
-  Offline.on "confirmed-up", ->
-    document.getElementById("offline-simulate-check").checked = false
+      
+    Offline.check()
