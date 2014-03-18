@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+    <title>Offline.js Simulate UI - Notification</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="lib/themes/offline-theme-chrome-indicator.css" />
+    <link rel="stylesheet" href="lib/themes/offline-language-english-indicator.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="lib/offline.min.js"></script>
+    <script src="offline-simulate-ui.min.js"></script>
+</head>
+<body class="container">
+    <div class="jumbotron">
+        <h1>Offline.js Simulate UI</h1>
+        <p class="lead">Offline Simulate UI is an <code><a href="https://github.com/hubspot/offline" target="_blank">Offline.js</a></code> 
+            plug-in that allows you to test how your pages respond to different connectivity 
+            states without having to use brute-force methods to disable your actual connectivity.</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <p class="alert alert-info"><strong>Try it out:</strong> Click on the checkbox on the left and see how the page responds.
+            Notice that this page uses the Offline.js Chrome theme notification which is found at the bottom left of the page.</p>
+        </div>
+        <div class="col-sm-4 col-sm-offset-1 push-top-down-sm">
+            <a href="index.html" class="btn btn-default btn-primary btn-lg">Try with the Offline.js Chrome theme</a>
+        </div>
+    </div>
+    <hr>
+    <div class="row container">
+        <div class="col-sm-5">
+            <h2>Demo</h2>
+            <div class="row online well">
+              <form class="form-horizontal">
+                <fieldset>
+
+                  <!-- Form Name -->
+                  <legend><div class="text-center h3">Have an account? Sign In</div></legend>
+
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-md-1 control-label" for="username"></label>  
+                    <div class="col-md-12">
+                      <input id="username" name="username" type="text" placeholder="Username" class="form-control input-md">
+                    </div>
+                  </div>
+
+                  <!-- Password input-->
+                  <div class="form-group">
+                    <label class="col-md-1 control-label" for="password"></label>
+                    <div class="col-md-12">
+                      <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md">
+                    </div>
+                  </div>
+
+                  <!-- Button (Double) -->
+                  <div class="form-group">
+                    <label class="col-md-1 control-label" for="login"></label>
+                  <div class="col-md-5">
+                    <button id="login" name="login" class="btn btn-block btn-success">Login</button>
+                  </div>
+                  <div class="col-md-5">
+                    <button id="forpass" name="forpass" class="btn btn-block btn-warning">I forgot my password</button></div>  
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+            <div class="alert alert-warning offline none">You can only sign in when you have an active internet connection.</div>
+        </div>
+        <div class="col-sm-6 col-sm-offset-1">
+            <h2>Notes</h2>
+            <p>When you include <code>offline-simulate-ui.min.js</code> on your page the following configuration settings 
+            are applied:</p>
+            
+            <ul>
+                <li>The <code>reconnect</code> option is set to <code>false</code>. This is done so that the simulation 
+                is successful. If you leave the reconnection option on then simulations are immediately overridden by 
+                subsequent checks for connectivity.</li>
+                <li>When you check the toggle checkbox <a href="https://github.com/hubspot/offline" target="_blank">Offline.js</a> 
+                    calls the <code>markDown</code> or <code>markUp</code> methods
+                (which ever is appropriate) and then your scripts can listen for the need events to have your page
+                respond accordingly.</li>
+            </ul>
+            
+            <p>You can optionally add the attribute <code>data-force-fail="true"</code> to make <strong>all</strong>
+                checks fail without having to check the checkbox. This way if you have Ajax requests happening in the 
+                background you can ensure they will fail so you can see how your users will experience the 
+                site when it's offline.</p>
+            
+            <h2>Usage</h2>
+            <p>Add the script to your page:</p>
+            <pre>&lt;script src=&quot;offline-simulate-ui.min.js&quot;&gt;&lt;/script&gt;</pre>
+            <h3 class="h5 text-muted">Optionally use the force fail attribute</h3>
+            <pre>&lt;script data-force-fail=&quot;false&quot; src=&quot;offline-simulate-ui.min.js&quot;&gt;&lt;/script&gt;</pre>
+            <p>Respond to Offline.js events:</p>
+            <pre>&lt;script&gt;
+    $(function(){
+
+        var 
+            $online = $('.online'),
+            $offline = $('.offline');
+
+        Offline.on('confirmed-down', function () {
+            $online.fadeOut(function () {
+                $offline.fadeIn();
+            });
+        });
+
+        Offline.on('confirmed-up', function () {
+            $offline.fadeOut(function () {
+                $online.fadeIn();
+            });
+        });
+
+    });
+&lt;/script&gt;</pre>
+        </div>
+    </div>
+    <footer class="text-muted small text-center push-top-down-lg push-bottom-down-lg">
+        <p>Created by <a href="http://twitter.com/craigshoemaker" target="_blank">Craig Shoemaker</a>, <a href="http://infragistics.com" target="_blank">Infragistics Technical Evangelist</a></p>
+    </footer>
+    <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script>
+        $(function(){
+            
+            var 
+                $online = $('.online'),
+                $offline = $('.offline');
+
+            Offline.on('confirmed-down', function () {
+                $online.fadeOut(function () {
+                    $offline.fadeIn();
+                });
+            });
+
+            Offline.on('confirmed-up', function () {
+                $offline.fadeOut(function () {
+                    $online.fadeIn();
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>

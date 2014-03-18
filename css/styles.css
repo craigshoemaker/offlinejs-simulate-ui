@@ -1,0 +1,25 @@
+.none {
+    display:none;
+}
+
+.form-group{
+    padding-left:25px;
+    padding-right:25px;
+}
+
+.push-top-down-lg {
+    margin-top: 4em;
+}
+
+.push-top-down-sm {
+    margin-top: 1em;
+}
+
+.push-bottom-down-lg{
+    margin-bottom: 4em;
+}
+
+ul li {
+    margin-top:1.5em;
+    margin-bottom:1.5em;
+}
