@@ -4,12 +4,6 @@ console.info "The offline.simulate.ui.js module is a development-only resource. 
 
 Offline.options.reconnect = false
 
-if document.querySelector('script[data-force-fail="true"]')
-  Offline.options.isSimulating = true
-  
-if Offline.options.isSimulating
-  Offline.options.checks.active = 'down'
-
 document.addEventListener "DOMContentLoaded", ->
   STYLE = """
           <style>
