@@ -2,7 +2,14 @@ throw new Error("Offline simulate UI brought in without Offline.js") unless Offl
 
 console.info "The offline.simulate.ui.js module is a development-only resource. Make sure to remove offline.simulate.ui.js in production."
 
+Offline.options.reconnect = 
+    initialDelay: 60
+
 load = ->
+  # I wouldn't normally add style rules
+  # in a script file, but this saves devs
+  # from having to add any extra stylesheets
+  # or polluting the main Offline stylesheets.
   STYLE = """
           <style>
             .offline-simulate-ui {
