@@ -39,15 +39,14 @@ load = ->
   document.body.appendChild container
 
   document.getElementById("offline-simulate-check").addEventListener "click", ->
+    Offline.options.checks ?= {}
+    
     if @checked
       Offline.options.checks.active = 'down'
-      Offline.markDown()
     else
       Offline.options.checks.active = 'up'
-      Offline.markUp()
 
-  Offline.on "confirmed-up", ->
-    document.getElementById("offline-simulate-check").checked = false
+    Offline.check()
 
 if document.readyState in ['interactive', 'complete']
   load()
