@@ -18,9 +18,10 @@
             states without having to use brute-force methods to disable your actual connectivity.</p>
     </div>
     <div class="row">
-        <div class="col-sm-6">
-            <p class="alert alert-info"><strong>Try it out:</strong> Click on the checkbox on the left and see how the page responds.
-            Notice that this page uses the Offline.js Chrome theme notification which is found at the bottom left of the page.</p>
+        <div class="col-sm-6 alert alert-info">
+            <span class="h3">Try It Out!</span>
+            <p>Click on the checkbox on the left-hand side of the window and see how the page responds.</p>
+            <p>Notice that this page uses the Offline.js Chrome theme notification which is found at the <strong>bottom left of the page</strong>.</p>
         </div>
         <div class="col-sm-4 col-sm-offset-1 push-top-down-sm">
             <a href="index.html" class="btn btn-default btn-primary btn-lg">Try with the Offline.js Chrome theme</a>
@@ -57,10 +58,10 @@
                   <div class="form-group">
                     <label class="col-md-1 control-label" for="login"></label>
                   <div class="col-md-5">
-                    <button id="login" name="login" class="btn btn-block btn-success">Login</button>
+                    <a href="#" id="login" name="login" class="btn btn-block btn-success">Login</a>
                   </div>
                   <div class="col-md-5">
-                    <button id="forpass" name="forpass" class="btn btn-block btn-warning">I forgot my password</button></div>  
+                    <a href="#" id="forpass" name="forpass" class="btn btn-block btn-warning">I forgot my password</a></div>  
                   </div>
                 </fieldset>
               </form>
@@ -73,25 +74,15 @@
             are applied:</p>
             
             <ul>
-                <li>The <code>reconnect</code> option is set to <code>false</code>. This is done so that the simulation 
-                is successful. If you leave the reconnection option on then simulations are immediately overridden by 
-                subsequent checks for connectivity.</li>
-                <li>When you check the toggle checkbox <a href="https://github.com/hubspot/offline" target="_blank">Offline.js</a> 
-                    calls the <code>markDown</code> or <code>markUp</code> methods
-                (which ever is appropriate) and then your scripts can listen for the needed events to have your page
-                respond accordingly.</li>
+                <li>The initial reconnect delay is set to 1 minute.</li>
+                <li>When you check the  checkbox to simulate being offline, the simulation module
+                    takes control of the <a href="https://github.com/hubspot/offline" target="_blank">Offline.js</a>
+                    checks and makes them all appear as if there is no internet connection available.</li>
             </ul>
-            
-            <p>You can optionally add the attribute <code>data-force-fail="true"</code> to make <strong>all</strong>
-                checks fail without having to check the checkbox. This way if you have Ajax requests happening in the 
-                background you can ensure they will fail so you can see how your users will experience the 
-                site when it's offline.</p>
             
             <h2>Usage</h2>
             <p>Add the script to your page:</p>
             <pre>&lt;script src=&quot;offline-simulate-ui.min.js&quot;&gt;&lt;/script&gt;</pre>
-            <h3 class="h5 text-muted">Optionally use the force fail attribute</h3>
-            <pre>&lt;script data-force-fail=&quot;false&quot; src=&quot;offline-simulate-ui.min.js&quot;&gt;&lt;/script&gt;</pre>
             <p>Respond to Offline.js events:</p>
             <pre>&lt;script&gt;
     $(function(){
