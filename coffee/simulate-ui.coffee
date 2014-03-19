@@ -2,7 +2,7 @@ throw new Error("Offline simulate UI brought in without Offline.js") unless Offl
 
 console.info "The offline.simulate.ui.js module is a development-only resource. Make sure to remove offline.simulate.ui.js in production."
 
-document.addEventListener "DOMContentLoaded", ->
+load = ->
   STYLE = """
           <style>
             .offline-simulate-ui {
@@ -48,3 +48,8 @@ document.addEventListener "DOMContentLoaded", ->
 
   Offline.on "confirmed-up", ->
     document.getElementById("offline-simulate-check").checked = false
+
+if document.readyState in ['interactive', 'complete']
+  load()
+else
+  document.addEventListener "DOMContentLoaded", load
