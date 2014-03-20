@@ -1,0 +1,33 @@
+{
+  "name": "offlinejs-simulate-ui",
+  "version": "0.1.0",
+  "homepage": "https://github.com/craigshoemaker/offlinejs-simulate-ui",
+  "authors": [
+    "Craig Shoemaker <craig@craigshoemaker.net>"
+  ],
+  "description": "Offline.js plug-in that allows you to test how your pages respond to different connectivity states without having to use brute-force methods to disable your actual connectivity.",
+  "main": "offline-simulate-ui.min.js",
+  "keywords": [
+    "offline",
+    "online",
+    "internet",
+    "network",
+    "ajax",
+    "notification",
+    "javascript",
+    "client-side"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "coffee",
+    "docs",
+    "js",
+    "test",
+    "lib",
+    "bower.json",
+    "package.json"
+  ]
+}
